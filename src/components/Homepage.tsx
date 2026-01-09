@@ -1,6 +1,6 @@
 export function Homepage() {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center bg-black">
+    <section id="home" className="relative h-screen flex items-center justify-center bg-black select-none">
       <div className="relative z-10 text-center text-white px-4">
         <h1 className="text-5xl md:text-7xl mb-6">Kyle Gossage</h1>
         <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">

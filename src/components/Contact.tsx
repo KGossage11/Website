@@ -9,28 +9,28 @@ export function Contact() {
     message: ''
   });
 
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-//     try {
-//       await emailjs.send(
-//         "service_w949ie8",//CHANGE THIS
-//         "template_pyyzn7o",//CHANGE THIS
-//         {
-//           name: formData.name,
-//           email: formData.email,
-//           message: formData.message,
-//         },
-//         "C8afEP2Zo_OYX9ac0"//CHANGE THIS
-//       );
+    try {
+      await emailjs.send(
+        "service_zmyabph",
+        "template_0849k08",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "C8afEP2Zo_OYX9ac0"
+      );
 
-//       alert("Message sent successfully!");
-//       setFormData({ name: "", email: "", message: "" });
-//     } catch (error) {
-//       console.error(error);
-//       alert("Failed to send message. Please try again.");
-//     }
-//   };
+      alert("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message. Please try again.");
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -40,7 +40,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-gray-50 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl mb-4">Contact Me</h2>
@@ -58,7 +58,12 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="mb-1">Email</h4>
-                  <p className="text-gray-600">kylegossage@gmail.com</p>
+                  <a
+                    href="mailto:kylegossage@gmail.com"
+                    className="text-gray-600 select-text hover:underline"
+                  >
+                    kylegossage@gmail.com
+                  </a>
                 </div>
               </div>
 
@@ -68,7 +73,12 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="mb-1">Phone</h4>
-                  <p className="text-gray-600">(813) 783-5953</p>
+                  <a
+                    href="tel:+18137835953"
+                    className="text-gray-600 select-text hover:underline"
+                  >
+                    (813) 783-5953
+                  </a>
                 </div>
               </div>
 
@@ -97,7 +107,7 @@ export function Contact() {
 
           {/* Contact Form */}
           <div>
-            <form /*onSubmit={handleSubmit}*/ className="bg-white p-8 rounded-lg shadow-sm">
+            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-sm">
               <div className="mb-6">
                 <label htmlFor="name" className="block mb-2">
                   Name

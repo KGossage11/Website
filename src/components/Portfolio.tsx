@@ -4,18 +4,13 @@ import PictureThis from "../assets/PTimg.png";
 import RapidReach from "../assets/RRimg.png";
 import SpotIt from "../assets/SpotIT.png";
 import personalPic from "../assets/personalPic.png";
+import resumeImg from "../assets/resumeImg.png";
+import resumePDF from "../assets/KG_Resume.pdf";
 
 type Category =
   | "about"
   | "projects"
-  | "skills"
   | "resume";
-
-// interface Photo {
-//   id: string;
-//   src: string;
-//   category: Category;
-// }
 
 interface Project {
   id: string;
@@ -26,7 +21,6 @@ interface Project {
   image: string;
 }
 
-// const PAGE_SIZE = 12;
 
 const projects: Project[] = [
   {
@@ -70,80 +64,16 @@ const projects: Project[] = [
 const categories = [
   { id: "about" as Category, label: "About" },
   { id: "projects" as Category, label: "Projects" },
-  { id: "skills" as Category, label: "Skills" },
   { id: "resume" as Category, label: "Resume" },
 ];
 
-// function FadeInImage({ src, alt }: { src: string; alt: string }) {
-//   const [loaded, setLoaded] = useState(false);
-
-//   return (
-//     <img
-//       src={src}
-//       alt={alt}
-//       onLoad={() => setLoaded(true)}
-//       loading="eager"
-//       decoding="async"
-//       fetchPriority="high"
-//       className={`w-full h-full object-cover contain-content transition-opacity duration-500 ${
-//         loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
-//       }`}
-//     />
-//   );
-// }
-
-// function loadPhotos(): Photo[] {
-//   const modules = import.meta.glob(
-//     "/src/assets/photos/{wildlife,graduations,portraits,events}/*.{jpg,jpeg,png,webp}",
-//     { eager: true }
-//   );
-
-//   return Object.entries(modules).map(([path, module]) => {
-//     const parts = path.split("/");
-//     const category = parts[parts.length - 2] as Category;
-
-//     return {
-//       id: path,
-//       src: (module as { default: string }).default,
-//       category,
-//     };
-//   });
-// }
-
-// const photos = loadPhotos();
 
 export function Portfolio() {
   const [selectedCategory, setSelectedCategory] =
     useState<Category>("about");
-//   const [page, setPage] = useState(0);
-
-//   useEffect(() => {
-//     setPage(0);
-//   }, [selectedCategory]);
-
-//   const filteredPhotos = useMemo(() => {
-//     return selectedCategory === "all"
-//       ? photos
-//       : photos.filter(photo => photo.category === selectedCategory);
-//   }, [selectedCategory]);
-
-//   const pagedPhotos = useMemo(() => {
-//     const start = page * PAGE_SIZE;
-//     return filteredPhotos.slice(start, start + PAGE_SIZE);
-//   }, [filteredPhotos, page]);
-
-//   useEffect(() => {
-//     pagedPhotos.forEach(photo => {
-//       const img = new Image();
-//       img.src = photo.src;
-//     });
-//   }, [pagedPhotos]);
-
-//   const totalPages = Math.ceil(filteredPhotos.length / PAGE_SIZE);
-
   return (
-    <section id="portfolio" className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-black">
+    <section id="portfolio" className="py-20 bg-black select-none">
+      <div className=" select-none max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-black">
         <div className="text-center text-black mb-12">
           <h2 className="text-4xl text-white md:text-5xl mb-4">Portfolio</h2>
 
@@ -165,7 +95,7 @@ export function Portfolio() {
         </div>
 
         {selectedCategory === "projects" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="select-none grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map(projects => (
               <a
                 key={projects.id}
@@ -216,6 +146,27 @@ export function Portfolio() {
                   I enjoy hiking, snowboarding, gaming, and exploring new technologies in my free time.
                 </p>
               </div>
+            </div>
+          </div>
+        )}
+
+        {selectedCategory === "resume" && (
+           <div className="select-none max-w-5xl mx-auto mt-4px-4group block rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-black">
+            <div>
+              <a
+                href={resumePDF}
+                download="Kyle_Gossage_Resume.pdf"
+                className="inline-block self-start bg-white text-black px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+              >
+                Download Resume
+              </a>
+            </div>
+            <div className="flex justify-center mt-8">
+              <img
+                src={resumeImg}
+                alt="Kyle Gossage"
+                className="w-full h-full object-contain rounded-lg"
+              />
             </div>
           </div>
         )}
